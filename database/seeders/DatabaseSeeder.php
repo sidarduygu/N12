@@ -10,18 +10,18 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
-        \App\Models\ProductCategory::factory(20)->create();
-        \App\Models\ProductInventory::factory(25)->create();
-        \App\Models\Discount::factory(20)->create();
-        \App\Models\Product::factory(25)->create();
-        \App\Models\User::factory(15)->create();
-        \App\Models\UserAddress::factory(15)->create();
-        \App\Models\UserPayment::factory(30)->create();
-        \App\Models\ShoppingSession::factory(30)->create();
-        \App\Models\CartItem::factory(61)->create();
-        \App\Models\PaymentDetail::factory(50)->create();
-        \App\Models\OrderDetail::factory(46)->create();
-        \App\Models\OrderItem::factory(50)->create();
+        \App\Models\ProductCategory::factory(200)->create();
+        \App\Models\ProductInventory::factory(250)->create();
+        \App\Models\Discount::factory(200)->create();
+        \App\Models\Product::factory(100000)->create();
+        \App\Models\User::factory(150)->create();
+        \App\Models\UserAddress::factory(150)->create();
+        \App\Models\UserPayment::factory(300)->create();
+        \App\Models\ShoppingSession::factory(300)->create();
+        \App\Models\CartItem::factory(610)->create();
+        \App\Models\PaymentDetail::factory(500)->create();
+        \App\Models\OrderDetail::factory(460)->create();
+        \App\Models\OrderItem::factory(500)->create();
 
 
 

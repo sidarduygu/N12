@@ -16,17 +16,18 @@ class UserAddressFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {
-        return [
-            'user_id' => function () {
-                return User::all()->random()->id;
-            },
-            'address_line_1' => $this->faker->streetAddress(),
-            'address_line_2' =>  $this->faker->streetAddress(),
-            'city' => $this->faker->city(),
-            'zip_code' => $this->faker->postcode(),
-            'country' => $this->faker->country(),
-            'phone' => $this->faker->phoneNumber(),
-        ];
-    }
+{
+    $userIds = User::pluck('id')->toArray();
+
+    return [
+        'user_id' => $this->faker->randomElement($userIds),
+        'address_line_1' => $this->faker->streetAddress(),
+        'address_line_2' =>  $this->faker->streetAddress(),
+        'city' => $this->faker->city(),
+        'zip_code' => $this->faker->postcode(),
+        'country' => $this->faker->country(),
+        'phone' => $this->faker->phoneNumber(),
+    ];
+}
+
 }

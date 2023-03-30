@@ -18,14 +18,13 @@ class OrderItemFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            'order_id' =>  function () {
-                return OrderDetail::all()->random()->id;
-            },
-            'product_id' => function () {
-                return Product::all()->random()->id;
-            },
+        $orderDetailIds = OrderDetail::pluck('id')->toArray();
+        $productIds = Product::pluck('id')->toArray();
 
+        return [
+            'order_id' => $this->faker->randomElement($orderDetailIds),
+            'product_id' => $this->faker->randomElement($productIds),
         ];
     }
+
 }

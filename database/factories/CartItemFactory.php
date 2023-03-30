@@ -18,15 +18,14 @@ class CartItemFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            'session_id' => function () {
-                return ShoppingSession::all()->random()->id;
-            },
-            'product_id' => function () {
-                return Product::all()->random()->id;
-            },
-            'quantity' => $this->faker->randomNumber(2),
+        $shoppingSessionIds = ShoppingSession::pluck('id')->toArray();
+        $productIds = Product::pluck('id')->toArray();
 
+        return [
+            'session_id' => $this->faker->randomElement($shoppingSessionIds),
+            'product_id' => $this->faker->randomElement($productIds),
+            'quantity' => $this->faker->randomNumber(2),
         ];
     }
+
 }

@@ -19,19 +19,18 @@ class ProductFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {
-        return [
-            'name' => $this->faker->firstName(),
-            'sku' => $this->faker->randomNumber(),
-            'category_id' => function () {
-                return ProductCategory::all()->random()->id;
-            },
-            'inventory_id' => function () {
-                return ProductInventory::all()->random()->id;
-            },
-            'discount_id' => function () {
-                return Discount::all()->random()->id;
-            },
-        ];
-    }
+{
+    $categoryIds = ProductCategory::pluck('id')->toArray();
+    $inventoryIds = ProductInventory::pluck('id')->toArray();
+    $discountIds = Discount::pluck('id')->toArray();
+
+    return [
+        'name' => $this->faker->firstName(),
+        'sku' => $this->faker->randomNumber(),
+        'category_id' => $this->faker->randomElement($categoryIds),
+        'inventory_id' => $this->faker->randomElement($inventoryIds),
+        'discount_id' => $this->faker->randomElement($discountIds),
+    ];
+}
+
 }

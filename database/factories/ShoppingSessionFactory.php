@@ -16,13 +16,12 @@ class ShoppingSessionFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {
-        return [
-            'user_id' =>  function () {
-                return User::all()->random()->id;
-            },
-            'total' => $this->faker->numberBetween(200,5000),
+{
+    $userIds = User::pluck('id')->toArray();
 
-        ];
-    }
+    return [
+        'user_id' => $this->faker->randomElement($userIds),
+        'total' => $this->faker->numberBetween(200,5000),
+    ];
+}
 }

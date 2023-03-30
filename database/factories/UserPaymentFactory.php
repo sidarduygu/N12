@@ -16,15 +16,16 @@ class UserPaymentFactory extends Factory
      * @return array<string, mixed>
      */
     public function definition(): array
-    {
-        return [
-            'user_id' =>function () {
-                return User::all()->random()->id;
-            },
-            'payment_type' => $this->faker->randomElement(['credit', 'debit', 'cash']),
-            'provider' => $this->faker->numberBetween(1000, 9999),
-            'account_no' => $this->faker->creditCardNumber(),
-            'expiry' => $this->faker->creditCardExpirationDate(),
-        ];
-    }
+{
+    return [
+        'user_id' => function () {
+            return User::all()->random()->id;
+        },
+        'payment_type' => $this->faker->randomElement(['credit', 'debit', 'cash']),
+        'provider' => $this->faker->numberBetween(1000, 9999),
+        'account_no' => $this->faker->creditCardNumber(),
+        'expiry' => $this->faker->creditCardExpirationDate(),
+    ];
+}
+
 }
